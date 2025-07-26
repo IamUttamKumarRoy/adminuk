@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Basic Bootstrap Page</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Sales Data Chart</h1>
+
+        <div class="card p-3">
+            <div id="chart"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Line Chart</h5>
+            <div id="line_chart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Area Chart</h5>
+            <div id="area_chart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Area Chart</h5>
+            <div id="area_chart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Bar Chart</h5>
+            <div id="bar_chart"></div>
+          </div>
+        </div>        
+    </div> 
+
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/vendor/apexcharts/dist/apexcharts.min.js"></script>
+
+        <script>
+        // ApexCharts configuration
+        var options = {
+            chart: {
+                type: 'bar',
+                height: 350,
+                toolbar: {
+                    show: false // You can set this to true to show chart toolbar (zoom, pan, etc.)
+                }
+            },
+            series: [{
+                name: 'Sales',
+                data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+            }],
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+            },
+            title: {
+                text: 'Monthly Sales',
+                align: 'left',
+                style: {
+                    fontSize: '16px',
+                    color: '#666'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
+        // Get the element where the chart will be rendered
+        var chartElement = document.querySelector("#chart");
+
+        // Initialize and render the chart
+        var chart = new ApexCharts(chartElement, options);
+        chart.render();
+
+        var options = {
+          chart: {
+            type: 'line',
+            height: 350,
+          },
+          series: [{
+            name: 'sales',
+            data: [30,40,35,50,49,60,70,91,125]
+          }],
+          xaxis: {
+            categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+          }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#line_chart"), options);
+
+        chart.render();
+
+        var options = {
+          chart: {
+            height: 280,
+            type: "area"
+          },
+          dataLabels: {
+            enabled: false
+          },
+          series: [
+            {
+              name: "Series 1",
+              data: [45, 52, 38, 45, 19, 23, 2]
+            }
+          ],
+          fill: {
+            type: "gradient",
+            gradient: {
+              shadeIntensity: 1,
+              opacityFrom: 0.7,
+              opacityTo: 0.9,
+              stops: [0, 90, 100]
+            }
+          },
+          xaxis: {
+            categories: [
+              "01 Jan",
+              "02 Jan",
+              "03 Jan",
+              "04 Jan",
+              "05 Jan",
+              "06 Jan",
+              "07 Jan"
+            ]
+          }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#area_chart"), options);
+
+        chart.render();
+
+        options = {
+          chart: {
+            type: 'bar',
+             height: 350,
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true
+            }
+          },
+          series: [{
+            data: [{
+              x: 'category A',
+              y: 10
+            }, {
+              x: 'category B',
+              y: 18
+            }, {
+              x: 'category C',
+              y: 13
+            }]
+          }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#bar_chart"), options);
+
+        chart.render();
+
+    </script>
+</body>
+</html>

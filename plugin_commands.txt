@@ -1,0 +1,110 @@
+npm install bootstrap
+
+npm install jquery
+
+
+[------------ Charts -----------------]
+
+npm install chart.js
+
+npm install flot
+
+npm i sparkline
+
+npm i uplot
+
+npm i apexcharts
+
+npm i d3
+
+[------------ Editors -----------]
+
+npm i summernote
+
+npm i codemirror
+
+npm i quill 
+
+npm i ace-code-editor
+
+
+[------------ Icon Packs -----------]
+
+npm install @fortawesome/fontawesome-free
+
+npm i flag-icon-css
+
+
+[------------ Form Elements -----------]
+
+npm install bootstrap-colorpicker
+
+npm install bootstrap-slider
+
+npm install bootstrap-switch
+
+npm i daterangepicker
+
+npm i dropzone
+
+npm i icheck-bootstrap
+
+npm install inputmask
+
+npm install ion-rangeslider
+
+npm install select2
+
+npm i @eonasdan/tempus-dominus
+
+npm install clipboard
+
+[------------ Table Grids -----------]
+npm i datatables
+
+npm install datatables.net
+
+npm install jsgrid
+
+
+[------------ Notifications -----------] 
+
+npm install sweetalert2
+
+npm install toastr
+
+[------------ Others -----------] 
+
+npm i fastclick
+
+npm i fullcalendar
+
+npm install jquery-knob
+
+npm install jquery-ui
+
+npm install jquery-validation
+
+npm i jquery-mapael
+
+npm i jqvmap
+
+npm i overlayscrollbars
+
+npm install pace-js
+
+npm install filterizr
+
+npm install nouislider
+
+[------------ Others -----------] 
+
+npm i jquery-mousewheel
+
+npm i moment
+
+npm i raphael
+
+npm i pdfmake
+
+npm i jszip

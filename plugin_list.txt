@@ -1,0 +1,56 @@
+zVj5VKQA@7vJ24n
+
+exness.com
+
+p@ssw0rd
+
+Bootstrap 4.6
+Bootstrap 4.6
+jQuery 3.5.1+
+Popper.js 1.16.1+
+
+ChartJS
+Flot Charts
+uPlot
+Sparkline
+Charts
+Editors
+Summernote
+CodeMirror
+Icon Packs
+flag-icon-css
+Form Elements
+Bootstrap Colorpicker
+Bootstrap Slider
+Bootstrap Switch
+Date Range Picker
+Dropzone JS
+iCheck Bootstrap
+Inputmask
+Ion.RangeSlider
+Select2
+Tempus Dominus
+Bootstrap4 Duallistbox
+bs-custom-file-input
+bs-stepper
+
+
+Table Grids
+DataTables
+DataTables (Included all open-source extensions with Bootstrap 4 styling)
+jsGrid
+
+SweetAlert2
+Toastr
+
+Others
+FastClick
+FullCalendar 4
+jQuery Knob
+jQuery UI
+jQuery Validation
+jQuery Mapael
+jQuery Vector Map
+Overlay Scrollbars
+Pace Progress
+FilterizR

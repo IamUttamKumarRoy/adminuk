@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible Sidebar</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Sidebar styles */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            transition: all 0.3s;
+        }
+        
+        .sidebar.collapsed {
+            width: 60px;
+        }
+        
+        .sidebar.collapsed .nav-link-text {
+            display: none;
+        }
+        
+        .sidebar.collapsed .logo-text {
+            display: none;
+        }
+        
+        /* Content area */
+        .content {
+            margin-left: 250px;
+            transition: all 0.3s;
+        }
+        
+        .content.collapsed {
+            margin-left: 60px;
+        }
+        
+        /* Toggle button */
+        .sidebar-toggle {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="p-3 d-flex align-items-center">
+                <i class="bi bi-app-indicator fs-4 me-3"></i>
+                <span class="logo-text fs-4 fw-bold">Logo</span>
+                <i class="bi bi-chevron-left sidebar-toggle ms-auto" id="sidebarToggle"></i>
+            </div>
+            <hr class="my-0">
+            <ul class="nav flex-column px-3">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="bi bi-speedometer2 me-3"></i>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-people me-3"></i>
+                        <span class="nav-link-text">Users</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-file-earmark-text me-3"></i>
+                        <span class="nav-link-text">Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-gear me-3"></i>
+                        <span class="nav-link-text">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content" id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button class="btn btn-sm btn-outline-secondary me-2" id="mobileSidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <span class="navbar-brand">Dashboard</span>
+                </div>
+            </nav>
+            <div class="container-fluid p-4">
+                <h4>Main Content Area</h4>
+                <p>This content will adjust when the sidebar collapses.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
+            
+            // Toggle sidebar on button click
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                content.classList.toggle('collapsed');
+                
+                // Change the toggle icon direction
+                if (sidebar.classList.contains('collapsed')) {
+                    this.classList.remove('bi-chevron-left');
+                    this.classList.add('bi-chevron-right');
+                } else {
+                    this.classList.remove('bi-chevron-right');
+                    this.classList.add('bi-chevron-left');
+                }
+            });
+            
+            // Toggle sidebar on mobile view
+            mobileSidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('show');
+            });
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 992 && !sidebar.contains(event.target) && 
+                    event.target !== mobileSidebarToggle && !mobileSidebarToggle.contains(event.target)) {
+                    sidebar.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

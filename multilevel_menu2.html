@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pure CSS Vertical Menu</title>
+    <meta name="viewport" 
+          content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+          href=
+"https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+    <style>
+        .pure-menu-heading {
+            color: #308d46;
+        }
+
+        .custom-display {
+            /* To limit the menu width to 
+            the content of the menu: */
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=" pure-menu custom-display">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-heading">
+                GeeksforGeeks
+            </li>
+
+
+            <li class="pure-menu-item 
+                       pure-menu-has-children 
+                       pure-menu-allow-hover">
+                <a href="#" 
+                   class="pure-menu-link">
+                    Tutorials
+                </a>
+
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item">
+                        <a href="#" 
+                           class="pure-menu-link">
+                            Data Structures and Algorithms
+                        </a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a href="#" 
+                           class="pure-menu-link">
+                            GATE 2022
+                        </a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a href="#" 
+                           class="pure-menu-link">
+                            Practice
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#" 
+                   class="pure-menu-link">
+                    Students
+                </a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#" 
+                   class="pure-menu-link">
+                    Jobs
+                </a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#" 
+                   class="pure-menu-link">
+                    Courses
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</body>
+
+</html>

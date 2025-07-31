@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Level Vertical Menu</title>
+    <link rel="stylesheet" href="style.css">
+	
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    width: 250px; /* Width of the main vertical menu */
+    background-color: #333;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    overflow: hidden; /* Important for containing floated/positioned elements later */
+}
+
+/* Base list styling */
+.main-menu,
+.sub-menu {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu li,
+.sub-menu li {
+    position: relative; /* Essential for positioning sub-menus */
+}
+
+.main-menu a,
+.sub-menu a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: white;
+    white-space: nowrap; /* Prevent text wrapping for menu items */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
+}
+
+.main-menu li:last-child > a,
+.sub-menu li:last-child > a {
+    border-bottom: none; /* No border for the last item in a list */
+}
+
+/* Hover effects for all menu items */
+.main-menu a:hover,
+.sub-menu a:hover {
+    background-color: #555;
+    color: #ffd700; /* Gold color for hover */
+}
+
+/* Sub-menu specific styling */
+.sub-menu {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position relative to its parent li */
+    left: 100%; /* Appears to the right of the parent item */
+    top: 0; /* Aligned with the top of the parent item */
+    min-width: 200px; /* Minimum width for sub-menus */
+    background-color: #444;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    z-index: 100; /* Ensure sub-menus appear above other content */
+    border-radius: 0 8px 8px 0; /* Rounded corners only on the right side */
+}
+
+/* Show sub-menu on hover of parent li */
+.main-menu li:hover > .sub-menu,
+.sub-menu li:hover > .sub-menu {
+    display: block;
+}
+
+/* Add an arrow indicator for parent items with sub-menus (optional) */
+.main-menu li:has(.sub-menu) > a::after,
+.sub-menu li:has(.sub-menu) > a::after {
+    content: '►'; /* Right-pointing triangle */
+    float: right;
+    margin-left: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when sub-menu is hovered (optional) */
+.main-menu li:hover > a::after,
+.sub-menu li:hover > a::after {
+    transform: rotate(90deg); /* Or could be down-arrow for expansion downwards */
+}
+
+/* Adjust padding for items with arrows to align text better */
+.main-menu li:has(.sub-menu) > a,
+.sub-menu li:has(.sub-menu) > a {
+    padding-right: 35px; /* Make space for the arrow */
+}
+</style>	
+</head>
+<body>
+
+    <aside class="sidebar">
+        <ul class="main-menu">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">About Us</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Company History</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Mission & Vision</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Services</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Mobile App Development</a></li>
+                    <li>
+                        <a href="#">UI/UX Design</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Wireframing</a></li>
+                            <li><a href="#">Prototyping</a></li>
+                            <li><a href="#">User Research</a></li>
+                            <li><a href="#">Usability Testing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Cloud Solutions</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Products</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Product A</a></li>
+                    <li>
+                        <a href="#">Product B</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Feature 1</a></li>
+                            <li><a href="#">Feature 2</a></li>
+                            <li><a href="#">Feature 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Product C</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Call Us</a></li>
+                    <li><a href="#">Location</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Blog</a>
+            </li>
+        </ul>
+    </aside>
+
+</body>
+</html>

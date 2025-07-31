@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Level Vertical Menu (JS)</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    width: 250px; /* Width of the main vertical menu */
+    background-color: #333;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Base list styling */
+.main-menu,
+.sub-menu {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu li,
+.sub-menu li {
+    position: relative; /* Essential for positioning sub-menus */
+}
+
+.main-menu a,
+.sub-menu a {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: white;
+    white-space: nowrap; /* Prevent text wrapping for menu items */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
+    display: flex; /* For icon alignment */
+    align-items: center; /* For icon alignment */
+    justify-content: space-between; /* To push icon to the right */
+}
+
+.main-menu li:last-child > a,
+.sub-menu li:last-child > a {
+    border-bottom: none; /* No border for the last item in a list */
+}
+
+/* Hover effects for all menu items */
+.main-menu a:hover,
+.sub-menu a:hover {
+    background-color: #555;
+    color: #ffd700; /* Gold color for hover */
+}
+
+/* Sub-menu specific styling */
+.sub-menu {
+    /* Hidden by default, will be shown by JS via a class */
+    max-height: 0; /* Start hidden for smooth transition */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Smooth slide transition */
+
+    /* Positioning for higher levels (appearing to the right) */
+    position: absolute; /* Position relative to its parent li */
+    left: 100%; /* Appears to the right of the parent item */
+    top: 0; /* Aligned with the top of the parent item */
+    min-width: 200px; /* Minimum width for sub-menus */
+    background-color: #444;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    z-index: 100; /* Ensure sub-menus appear above other content */
+    border-radius: 0 8px 8px 0; /* Rounded corners only on the right side */
+}
+
+/* Styles for active/open sub-menus */
+.sub-menu.open {
+    max-height: 500px; /* A value larger than the max possible height of the sub-menu */
+    /* When a sub-menu is opened by JS, it needs to also be positioned correctly */
+    /* Only apply absolute positioning for sub-menus that are *not* the direct child of the main-menu */
+}
+
+/* For the first level sub-menus (direct children of main-menu li) */
+.main-menu > li > .sub-menu {
+    position: static; /* Stack directly below parent for initial collapse/expand */
+    left: auto;
+    top: auto;
+    width: 100%; /* Take full width of parent sidebar */
+    box-shadow: none; /* No extra shadow needed here */
+    border-radius: 0; /* No rounded corners here */
+    background-color: #2b2b2b; /* Slightly darker for nested levels */
+}
+
+/* When a main menu item is active, its direct sub-menu opens below it */
+.main-menu > .has-submenu.active > .sub-menu {
+    max-height: 500px; /* Expand it */
+}
+
+
+/* When a deeper sub-menu is active, it expands to the right */
+.sub-menu .has-submenu.active > .sub-menu {
+    max-height: 500px; /* Expand it */
+    position: absolute; /* Position to the right for deeper levels */
+    left: 100%;
+    top: 0;
+    min-width: 200px;
+    background-color: #444; /* Back to original sub-menu background */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    border-radius: 0 8px 8px 0;
+}
+
+
+/* Icon styling */
+.has-submenu a i {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate icon when submenu is open */
+.has-submenu.active > a i {
+    transform: rotate(180deg); /* Points up when open */
+}
+
+/* Hide the icon on deeper sub-menus unless active (optional) */
+/* .sub-menu .has-submenu a i {
+    opacity: 0.7;
+} */
+</style>	
+</head>
+<body>
+
+    <aside class="sidebar">
+        <ul class="main-menu">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li class="has-submenu">
+                <a href="#">About Us <i class="fas fa-chevron-down"></i></a>
+                <ul class="sub-menu">
+                    <li><a href="#">Company History</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Mission & Vision</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                <ul class="sub-menu">
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Mobile App Development</a></li>
+                    <li class="has-submenu">
+                        <a href="#">UI/UX Design <i class="fas fa-chevron-down"></i></a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Wireframing</a></li>
+                            <li><a href="#">Prototyping</a></li>
+                            <li><a href="#">User Research</a></li>
+                            <li><a href="#">Usability Testing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Cloud Solutions</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#">Products <i class="fas fa-chevron-down"></i></a>
+                <ul class="sub-menu">
+                    <li><a href="#">Product A</a></li>
+                    <li class="has-submenu">
+                        <a href="#">Product B <i class="fas fa-chevron-down"></i></a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Feature 1</a></li>
+                            <li><a href="#">Feature 2</a></li>
+                            <li><a href="#">Feature 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Product C</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#">Contact <i class="fas fa-chevron-down"></i></a>
+                <ul class="sub-menu">
+                    <li><a href="#">Email Us</a></li>
+                    <li><a href="#">Call Us</a></li>
+                    <li><a href="#">Location</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Blog</a>
+            </li>
+        </ul>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>

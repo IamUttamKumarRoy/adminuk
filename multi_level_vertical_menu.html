@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vertical Menu</title>
+    <meta charset="UTF-8">
+	<style>
+	.vertical-menu ul {
+	  list-style: none;
+	  padding: 0;
+	  margin: 0;
+	  background: #2c3e50;
+	  width: 200px;
+	}
+
+	.vertical-menu li {
+	  position: relative;
+	}
+
+	.vertical-menu a {
+	  display: block;
+	  padding: 10px 15px;
+	  color: #ecf0f1;
+	  text-decoration: none;
+	  background: #34495e;
+	}
+
+	.vertical-menu li:hover > a {
+	  background: #1abc9c;
+	  transition: all 0.3s ease;
+	}
+
+	.vertical-menu ul ul {
+	  display: none;
+	  position: relative;
+	  left: 0;
+	}
+
+	.vertical-menu li:hover > ul {
+	  display: block;
+	  transition: all 0.3s ease;
+	}
+
+	.vertical-menu .has-sub > a::after {
+	  content: "▶";
+	  float: right;
+	}
+	</style>
+  </head>
+  <body>
+    <div class="vertical-menu">
+	  <ul>
+		<li><a href="#">Dashboard</a></li>
+		<li class="has-sub">
+		  <a href="#">Users</a>
+		  <ul>
+			<li><a href="#">Add User</a></li>
+			<li class="has-sub">
+			  <a href="#">Manage</a>
+			  <ul>
+				<li><a href="#">Admins</a></li>
+				<li><a href="#">Editors</a></li>
+			  </ul>
+			</li>
+		  </ul>
+		</li>
+		<li><a href="#">Settings</a></li>
+	  </ul>
+	</div>
+
+  </body>
+</html>

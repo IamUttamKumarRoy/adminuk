@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Level Vertical Menu</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        /* Menu container */
+        .vertical-menu {
+            width: 250px;
+            background: #2c3e50;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        /* Main menu items */
+        .vertical-menu li {
+            list-style-type: none;
+            position: relative;
+        }
+        
+        .vertical-menu li a {
+            display: block;
+            padding: 12px 15px;
+            color: #ecf0f1;
+            text-decoration: none;
+            border-bottom: 1px solid #34495e;
+            transition: all 0.3s ease;
+        }
+        
+        .vertical-menu li a:hover {
+            background: #34495e;
+        }
+        
+        /* Submenu indicators */
+        .vertical-menu li.has-submenu > a:after {
+            content: "▸";
+            float: right;
+            transition: transform 0.3s;
+        }
+        
+        .vertical-menu li.has-submenu.open > a:after {
+            transform: rotate(90deg);
+        }
+        
+        /* Submenu styles */
+        .vertical-menu ul.submenu {
+            max-height: 0;
+            overflow: hidden;
+            background: #34495e;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .vertical-menu li.open > ul.submenu {
+            max-height: 500px; /* Adjust based on content */
+        }
+        
+        /* Second level submenu */
+        .vertical-menu ul.submenu ul.submenu {
+            background: #3d566e;
+        }
+        
+        /* Third level submenu */
+        .vertical-menu ul.submenu ul.submenu ul.submenu {
+            background: #46627d;
+        }
+    </style>
+</head>
+<body>
+    <ul class="vertical-menu">
+        <li><a href="#">Home</a></li>
+        <li class="has-submenu">
+            <a href="#">Products</a>
+            <ul class="submenu">
+                <li><a href="#">Electronics</a></li>
+                <li class="has-submenu">
+                    <a href="#">Computers</a>
+                    <ul class="submenu">
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Desktops</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Furniture</a></li>
+            </ul>
+        </li>
+        <li class="has-submenu">
+            <a href="#">Services</a>
+            <ul class="submenu">
+                <li><a href="#">Consulting</a></li>
+                <li class="has-submenu">
+                    <a href="#">Support</a>
+                    <ul class="submenu">
+                        <li><a href="#">Technical Support</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <script>
+        // Simple JavaScript to toggle submenus
+        document.querySelectorAll('.has-submenu > a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parentLi = this.parentElement;
+                parentLi.classList.toggle('open');
+                
+                // Close other open submenus at the same level
+                const siblings = Array.from(parentLi.parentElement.children);
+                siblings.forEach(sibling => {
+                    if (sibling !== parentLi && sibling.classList.contains('open')) {
+                        sibling.classList.remove('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
